@@ -1,0 +1,18 @@
+
+{% if widgetPhotogalleryLightbox and widgetPhotogalleryLightbox.images %}
+
+    <h4>
+        {{ widgetPhotogalleryLightbox.name }}
+    </h4>
+
+    {{ widgetPhotogalleryLightbox.description }}
+
+    <div class="js-lightbox">
+        {% for image in widgetPhotogalleryLightbox.images  %}
+            <a class="mfp-image linked-image" href="{{ FRONTEND_FILES_URL }}/Photogallery/images/1200x/{{ image.filename }}">
+                <img class="b-lazy"  data-src="{{ FRONTEND_FILES_URL }}/Photogallery/images/400x/{{ image.filename }}" alt="{{ widgetPhotogalleryLightbox.name }}" >
+            </a>
+        {% endfor %}
+    </div>
+
+{% endif %}

@@ -1,0 +1,31 @@
+{% if widgetPhotogallerySlideshow and widgetPhotogallerySlideshow.images %}
+
+    <div class="slideshow-description">
+		<h1>{{ widgetPhotogallerySlideshow.name }}</h1>
+		{{ widgetPhotogallerySlideshow.description|raw }}
+    </div>
+
+    <div class="js-slideshow slideshow">
+        {% for image in widgetPhotogallerySlideshow.images  %}
+            <div class="slideshow-slide {% if image.data.portrait %}slideshow-slide-orientation-portrait{% endif %}">
+                {#<div class="slideshow-slide-caption">
+                    {{ image.name }}
+                </div>#}
+				<div class="slideshow-slide-image">
+					<div class="aspect-ratio">
+						<div class="img" style="background-image: url({{ FRONTEND_FILES_URL }}/Photogallery/images/1200x/{{ image.filename }})"></div>
+					</div>
+				</div>
+            </div>
+        {% endfor %}
+
+        {% if widgetPhotogallerySlideshow.images|length > 1 %}
+            {# pager #}
+            <div class="slideshow-pager cycle-pager"></div>
+            {# prev next #}
+            <div class="slideshow-arrow cycle-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+            <div class="slideshow-arrow cycle-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+        {% endif %}
+    </div>
+
+{% endif %}
